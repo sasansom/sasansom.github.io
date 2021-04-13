@@ -19,13 +19,6 @@
     font-display: swap;
     src: local("Cardo Italic"), local("Cardo-Italic"), url(fonts/Cardo-Italic.woff) format("woff2");
 }
-@font-face {
-    font-family: "Cardo";
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-    src: local("Cardo Bold"), local("Cardo-Bold"), url(fonts/Cardo-Bold.woff) format("woff2");
-}
 
 #sidebar {
     background-color: peachpuff;
@@ -118,7 +111,7 @@ summary, .word {
     position: relative;
 }
 /* Keep background colors and full saturation when printing. */
-.text, #vis-helper {
+.text, #vis-helper, #sedes-dist {
     color-adjust: exact;
     -webkit-print-color-adjust: exact;
 }
@@ -194,7 +187,7 @@ summary, .word {
 }
 .shade-bubbles .word::before,
 .shade-bubbles-diverging .word::before {
-    --s: 1.5rem;
+    --s: 1.5em;
     position: absolute;
     opacity: 0.5;
     border-radius: 50%;
@@ -202,12 +195,12 @@ summary, .word {
     content: "";
     width: var(--s);
     height: var(--s);
-    bottom: calc(var(--s) / -2 + 1ex);
-    left: calc(var(--s) / -2 + 0.5rem);
+    bottom: calc(var(--s) / -2 + 0.667em);
+    left: calc(var(--s) / -2 + 1ch);
 }
 
 .size-bubbles .word {
-    --r: 2.5rem; /* radius of 100% circle */
+    --r: 2em; /* radius of 100% circle */
     position: relative;
 }
 .size-bubbles .word::before {
@@ -222,15 +215,19 @@ summary, .word {
     content: "";
     width: var(--s);
     height: var(--s);
-    bottom: calc(var(--s) / -2 + 1ex);
-    left: calc(var(--s) / -2 + 0.5rem);
+    bottom: calc(var(--s) / -2 + 0.667em);
+    left: calc(var(--s) / -2 + 1ch);
+}
+
+#shade-scale, #shade-diverging-scale {
+    display: none;
+    justify-content: space-between;
+    padding: 0.25em;
 }
 
 #shade-scale {
-    display: none;
     background: linear-gradient(to right, #363636, #3a3a3a, #3d3d3d, #414141, #454545, #494949, #4d4d4d, #515151, #555555, #5a5a5a, #5e5e5e, #636363, #686868, #6d6d6d, #727272, #777777, #7c7c7c, #818181, #868686, #8b8b8b, #909090, #959595, #9a9a9a, #9f9f9f, #a4a4a4, #a9a9a9, #adadad, #b2b2b2, #b6b6b6, #bababa, #bdbdbd, #c1c1c1, #c4c4c4, #c7c7c7, #cacaca, #cdcdcd, #cfcfcf, #d1d1d1, #d3d3d3, #d5d5d5, #d7d7d7, #d8d8d8, #dadada, #dbdbdb, #dcdcdc, #dddddd, #dedede, #dfdfdf, #e0e0e0, #e1e1e1, #e1e1e1);
     color: gray;
-    justify-content: space-between;
 }
 #vis-helper.shade-text #shade-scale,
 #vis-helper.shade-bubbles #shade-scale {
@@ -238,10 +235,8 @@ summary, .word {
 }
 
 #shade-diverging-scale {
-    display: none;
     background: linear-gradient(to right, #bb7669, #bc796c, #bd7c70, #be7f74, #bf8278, #c0867c, #c18a80, #c38e85, #c4928a, #c6968f, #c89b94, #caa099, #cca59f, #ceaaa5, #d1b0ab, #d3b6b1, #d6bcb8, #d9c1be, #dbc7c5, #decdcb, #e1d4d2, #e5dad8, #e8e0df, #ebe6e5, #eeebeb, #f1f1f1, #ebecef, #e4e7ec, #dde2ea, #d6dde7, #d0d8e5, #c9d2e2, #c1cde0, #bac8de, #b3c3db, #acbed9, #a6bad7, #9fb5d6, #98b1d4, #92add2, #8ba9d1, #85a5cf, #7fa2ce, #7a9fcd, #749ccc, #6f99cb, #6a96ca, #6594c9, #6092c8, #5c90c8, #588ec7);
     color: black;
-    justify-content: space-between;
 }
 #vis-helper.shade-text-diverging #shade-diverging-scale,
 #vis-helper.shade-bubbles-diverging #shade-diverging-scale {
@@ -1196,6 +1191,7 @@ summary, .word {
 <tr><th scope=row>shape</th><td><output id=shape-output></output></td></tr>
 <tr><th scope=row>lemma</th><td><output id=lemma-output></output></td></tr>
 <tr><th scope=row>sedes</th><td><output id=sedes-output></output></td></tr>
+<tr><th scope=row>Σ<var>x</var></th><td><output id=sumx-output></output></td></tr>
 </table>
 
 <table id=sedes-dist>
@@ -17222,6 +17218,7 @@ const WORD_OUTPUT = document.getElementById("word-output");
 const SHAPE_OUTPUT = document.getElementById("shape-output");
 const LEMMA_OUTPUT = document.getElementById("lemma-output");
 const SEDES_OUTPUT = document.getElementById("sedes-output");
+const SUMX_OUTPUT = document.getElementById("sumx-output");
 const SEDES_DIST = document.getElementById("sedes-dist");
 
 function format_signed_float(x, digits) {
@@ -17253,17 +17250,19 @@ function info(event) {
 
     let lemma = event.target.getAttribute("data-lemma");
     let sedes = event.target.getAttribute("data-sedes");
+    let sum_x = POSSIBLE_SEDES.map(sedes => EXPECTANCY.get(`${lemma}/${sedes}`)?.x ?? 0).reduce((a, b) => a + b);
+
     WORD_OUTPUT.textContent = event.target.textContent;
     SHAPE_OUTPUT.textContent = event.target.getAttribute("data-shape") ?? "";
     LEMMA_OUTPUT.textContent = lemma ?? "";
     SEDES_OUTPUT.textContent = sedes ?? "";
+    SUMX_OUTPUT.textContent = sum_x ?? "";
 
     for (let elem of SEDES_DIST.getElementsByTagName("th"))
         elem.classList.toggle("selected", false);
     if (sedes != null)
         document.getElementById(`sedes-dist-header-${sedes}`).classList.toggle("selected", true);
 
-    let sum_x = POSSIBLE_SEDES.map(sedes => EXPECTANCY.get(`${lemma}/${sedes}`)?.x ?? 0).reduce((a, b) => a + b);
     for (let sedes of POSSIBLE_SEDES) {
         let {x, z} = EXPECTANCY.get(`${lemma}/${sedes}`) ?? {};
         let output_x = document.getElementById(`output-x-${sedes}`);
