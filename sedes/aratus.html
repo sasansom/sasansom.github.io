@@ -38,6 +38,10 @@
 #word-output, #lemma-output {
     font-family: "Cardo";
 }
+.shape {
+    /* Prevent longa from running together: https://github.com/sasansom/sedes/issues/58 */
+    letter-spacing: 0.5ex;
+}
 #infobox {
     line-height: 1rem;
 }
@@ -291,38 +295,38 @@ summary, .word {
 .shade-text .sedes .z-5 { color: #383838; }
 #sedes-dist.shade-text .z-5 { color: white; background-color: #383838; }
 .shade-text-diverging .sedes .z-5 { color: #bb786b; }
-#sedes-dist.shade-text-diverging .z-5 { color: black; background-color: #bb786b; }
+#sedes-dist.shade-text-diverging .z-5 { color: white; background-color: #bb786b; }
 .shade-bubbles .sedes .z-5::before { background-color: #383838; }
 #sedes-dist.shade-bubbles .z-5 { color: white; background-color: #383838; }
 .shade-bubbles-diverging .sedes .z-5::before { background-color: #bb786b; }
-#sedes-dist.shade-bubbles-diverging .z-5 { color: black; background-color: #bb786b; }
+#sedes-dist.shade-bubbles-diverging .z-5 { color: white; background-color: #bb786b; }
 .size-bubbles .sedes .z-5::before { --s: calc(var(--r) * 0.975); }
 .shade-text .sedes .z-6 { color: #3e3e3e; }
 #sedes-dist.shade-text .z-6 { color: white; background-color: #3e3e3e; }
 .shade-text-diverging .sedes .z-6 { color: #bd7c70; }
-#sedes-dist.shade-text-diverging .z-6 { color: black; background-color: #bd7c70; }
+#sedes-dist.shade-text-diverging .z-6 { color: white; background-color: #bd7c70; }
 .shade-bubbles .sedes .z-6::before { background-color: #3e3e3e; }
 #sedes-dist.shade-bubbles .z-6 { color: white; background-color: #3e3e3e; }
 .shade-bubbles-diverging .sedes .z-6::before { background-color: #bd7c70; }
-#sedes-dist.shade-bubbles-diverging .z-6 { color: black; background-color: #bd7c70; }
+#sedes-dist.shade-bubbles-diverging .z-6 { color: white; background-color: #bd7c70; }
 .size-bubbles .sedes .z-6::before { --s: calc(var(--r) * 0.970); }
 .shade-text .sedes .z-7 { color: #434343; }
 #sedes-dist.shade-text .z-7 { color: white; background-color: #434343; }
 .shade-text-diverging .sedes .z-7 { color: #be8075; }
-#sedes-dist.shade-text-diverging .z-7 { color: black; background-color: #be8075; }
+#sedes-dist.shade-text-diverging .z-7 { color: white; background-color: #be8075; }
 .shade-bubbles .sedes .z-7::before { background-color: #434343; }
 #sedes-dist.shade-bubbles .z-7 { color: white; background-color: #434343; }
 .shade-bubbles-diverging .sedes .z-7::before { background-color: #be8075; }
-#sedes-dist.shade-bubbles-diverging .z-7 { color: black; background-color: #be8075; }
+#sedes-dist.shade-bubbles-diverging .z-7 { color: white; background-color: #be8075; }
 .size-bubbles .sedes .z-7::before { --s: calc(var(--r) * 0.964); }
 .shade-text .sedes .z-8 { color: #474747; }
 #sedes-dist.shade-text .z-8 { color: white; background-color: #474747; }
 .shade-text-diverging .sedes .z-8 { color: #c0857a; }
-#sedes-dist.shade-text-diverging .z-8 { color: black; background-color: #c0857a; }
+#sedes-dist.shade-text-diverging .z-8 { color: white; background-color: #c0857a; }
 .shade-bubbles .sedes .z-8::before { background-color: #474747; }
 #sedes-dist.shade-bubbles .z-8 { color: white; background-color: #474747; }
 .shade-bubbles-diverging .sedes .z-8::before { background-color: #c0857a; }
-#sedes-dist.shade-bubbles-diverging .z-8 { color: black; background-color: #c0857a; }
+#sedes-dist.shade-bubbles-diverging .z-8 { color: white; background-color: #c0857a; }
 .size-bubbles .sedes .z-8::before { --s: calc(var(--r) * 0.959); }
 .shade-text .sedes .z-9 { color: #4b4b4b; }
 #sedes-dist.shade-text .z-9 { color: white; background-color: #4b4b4b; }
@@ -532,56 +536,56 @@ summary, .word {
 #sedes-dist.shade-bubbles-diverging .z-31 { color: black; background-color: #dcc9c7; }
 .size-bubbles .sedes .z-31::before { --s: calc(var(--r) * 0.831); }
 .shade-text .sedes .z-32 { color: #8a8a8a; }
-#sedes-dist.shade-text .z-32 { color: black; background-color: #8a8a8a; }
+#sedes-dist.shade-text .z-32 { color: white; background-color: #8a8a8a; }
 .shade-text-diverging .sedes .z-32 { color: #deccc9; }
 #sedes-dist.shade-text-diverging .z-32 { color: black; background-color: #deccc9; }
 .shade-bubbles .sedes .z-32::before { background-color: #8a8a8a; }
-#sedes-dist.shade-bubbles .z-32 { color: black; background-color: #8a8a8a; }
+#sedes-dist.shade-bubbles .z-32 { color: white; background-color: #8a8a8a; }
 .shade-bubbles-diverging .sedes .z-32::before { background-color: #deccc9; }
 #sedes-dist.shade-bubbles-diverging .z-32 { color: black; background-color: #deccc9; }
 .size-bubbles .sedes .z-32::before { --s: calc(var(--r) * 0.825); }
 .shade-text .sedes .z-33 { color: #8c8c8c; }
-#sedes-dist.shade-text .z-33 { color: black; background-color: #8c8c8c; }
+#sedes-dist.shade-text .z-33 { color: white; background-color: #8c8c8c; }
 .shade-text-diverging .sedes .z-33 { color: #dfcecc; }
 #sedes-dist.shade-text-diverging .z-33 { color: black; background-color: #dfcecc; }
 .shade-bubbles .sedes .z-33::before { background-color: #8c8c8c; }
-#sedes-dist.shade-bubbles .z-33 { color: black; background-color: #8c8c8c; }
+#sedes-dist.shade-bubbles .z-33 { color: white; background-color: #8c8c8c; }
 .shade-bubbles-diverging .sedes .z-33::before { background-color: #dfcecc; }
 #sedes-dist.shade-bubbles-diverging .z-33 { color: black; background-color: #dfcecc; }
 .size-bubbles .sedes .z-33::before { --s: calc(var(--r) * 0.819); }
 .shade-text .sedes .z-34 { color: #8e8e8e; }
-#sedes-dist.shade-text .z-34 { color: black; background-color: #8e8e8e; }
+#sedes-dist.shade-text .z-34 { color: white; background-color: #8e8e8e; }
 .shade-text-diverging .sedes .z-34 { color: #e0d0ce; }
 #sedes-dist.shade-text-diverging .z-34 { color: black; background-color: #e0d0ce; }
 .shade-bubbles .sedes .z-34::before { background-color: #8e8e8e; }
-#sedes-dist.shade-bubbles .z-34 { color: black; background-color: #8e8e8e; }
+#sedes-dist.shade-bubbles .z-34 { color: white; background-color: #8e8e8e; }
 .shade-bubbles-diverging .sedes .z-34::before { background-color: #e0d0ce; }
 #sedes-dist.shade-bubbles-diverging .z-34 { color: black; background-color: #e0d0ce; }
 .size-bubbles .sedes .z-34::before { --s: calc(var(--r) * 0.812); }
 .shade-text .sedes .z-35 { color: #909090; }
-#sedes-dist.shade-text .z-35 { color: black; background-color: #909090; }
+#sedes-dist.shade-text .z-35 { color: white; background-color: #909090; }
 .shade-text-diverging .sedes .z-35 { color: #e1d3d1; }
 #sedes-dist.shade-text-diverging .z-35 { color: black; background-color: #e1d3d1; }
 .shade-bubbles .sedes .z-35::before { background-color: #909090; }
-#sedes-dist.shade-bubbles .z-35 { color: black; background-color: #909090; }
+#sedes-dist.shade-bubbles .z-35 { color: white; background-color: #909090; }
 .shade-bubbles-diverging .sedes .z-35::before { background-color: #e1d3d1; }
 #sedes-dist.shade-bubbles-diverging .z-35 { color: black; background-color: #e1d3d1; }
 .size-bubbles .sedes .z-35::before { --s: calc(var(--r) * 0.806); }
 .shade-text .sedes .z-36 { color: #919191; }
-#sedes-dist.shade-text .z-36 { color: black; background-color: #919191; }
+#sedes-dist.shade-text .z-36 { color: white; background-color: #919191; }
 .shade-text-diverging .sedes .z-36 { color: #e2d5d3; }
 #sedes-dist.shade-text-diverging .z-36 { color: black; background-color: #e2d5d3; }
 .shade-bubbles .sedes .z-36::before { background-color: #919191; }
-#sedes-dist.shade-bubbles .z-36 { color: black; background-color: #919191; }
+#sedes-dist.shade-bubbles .z-36 { color: white; background-color: #919191; }
 .shade-bubbles-diverging .sedes .z-36::before { background-color: #e2d5d3; }
 #sedes-dist.shade-bubbles-diverging .z-36 { color: black; background-color: #e2d5d3; }
 .size-bubbles .sedes .z-36::before { --s: calc(var(--r) * 0.800); }
 .shade-text .sedes .z-37 { color: #939393; }
-#sedes-dist.shade-text .z-37 { color: black; background-color: #939393; }
+#sedes-dist.shade-text .z-37 { color: white; background-color: #939393; }
 .shade-text-diverging .sedes .z-37 { color: #e3d7d5; }
 #sedes-dist.shade-text-diverging .z-37 { color: black; background-color: #e3d7d5; }
 .shade-bubbles .sedes .z-37::before { background-color: #939393; }
-#sedes-dist.shade-bubbles .z-37 { color: black; background-color: #939393; }
+#sedes-dist.shade-bubbles .z-37 { color: white; background-color: #939393; }
 .shade-bubbles-diverging .sedes .z-37::before { background-color: #e3d7d5; }
 #sedes-dist.shade-bubbles-diverging .z-37 { color: black; background-color: #e3d7d5; }
 .size-bubbles .sedes .z-37::before { --s: calc(var(--r) * 0.794); }
@@ -1074,38 +1078,38 @@ summary, .word {
 .shade-text .sedes .z-92 { color: #dedede; }
 #sedes-dist.shade-text .z-92 { color: black; background-color: #dedede; }
 .shade-text-diverging .sedes .z-92 { color: #6d98ca; }
-#sedes-dist.shade-text-diverging .z-92 { color: black; background-color: #6d98ca; }
+#sedes-dist.shade-text-diverging .z-92 { color: white; background-color: #6d98ca; }
 .shade-bubbles .sedes .z-92::before { background-color: #dedede; }
 #sedes-dist.shade-bubbles .z-92 { color: black; background-color: #dedede; }
 .shade-bubbles-diverging .sedes .z-92::before { background-color: #6d98ca; }
-#sedes-dist.shade-bubbles-diverging .z-92 { color: black; background-color: #6d98ca; }
+#sedes-dist.shade-bubbles-diverging .z-92 { color: white; background-color: #6d98ca; }
 .size-bubbles .sedes .z-92::before { --s: calc(var(--r) * 0.283); }
 .shade-text .sedes .z-93 { color: #dfdfdf; }
 #sedes-dist.shade-text .z-93 { color: black; background-color: #dfdfdf; }
 .shade-text-diverging .sedes .z-93 { color: #6795c9; }
-#sedes-dist.shade-text-diverging .z-93 { color: black; background-color: #6795c9; }
+#sedes-dist.shade-text-diverging .z-93 { color: white; background-color: #6795c9; }
 .shade-bubbles .sedes .z-93::before { background-color: #dfdfdf; }
 #sedes-dist.shade-bubbles .z-93 { color: black; background-color: #dfdfdf; }
 .shade-bubbles-diverging .sedes .z-93::before { background-color: #6795c9; }
-#sedes-dist.shade-bubbles-diverging .z-93 { color: black; background-color: #6795c9; }
+#sedes-dist.shade-bubbles-diverging .z-93 { color: white; background-color: #6795c9; }
 .size-bubbles .sedes .z-93::before { --s: calc(var(--r) * 0.265); }
 .shade-text .sedes .z-94 { color: #e0e0e0; }
 #sedes-dist.shade-text .z-94 { color: black; background-color: #e0e0e0; }
 .shade-text-diverging .sedes .z-94 { color: #6192c8; }
-#sedes-dist.shade-text-diverging .z-94 { color: black; background-color: #6192c8; }
+#sedes-dist.shade-text-diverging .z-94 { color: white; background-color: #6192c8; }
 .shade-bubbles .sedes .z-94::before { background-color: #e0e0e0; }
 #sedes-dist.shade-bubbles .z-94 { color: black; background-color: #e0e0e0; }
 .shade-bubbles-diverging .sedes .z-94::before { background-color: #6192c8; }
-#sedes-dist.shade-bubbles-diverging .z-94 { color: black; background-color: #6192c8; }
+#sedes-dist.shade-bubbles-diverging .z-94 { color: white; background-color: #6192c8; }
 .size-bubbles .sedes .z-94::before { --s: calc(var(--r) * 0.245); }
 .shade-text .sedes .z-95 { color: #e1e1e1; }
 #sedes-dist.shade-text .z-95 { color: black; background-color: #e1e1e1; }
 .shade-text-diverging .sedes .z-95 { color: #598ec7; }
-#sedes-dist.shade-text-diverging .z-95 { color: black; background-color: #598ec7; }
+#sedes-dist.shade-text-diverging .z-95 { color: white; background-color: #598ec7; }
 .shade-bubbles .sedes .z-95::before { background-color: #e1e1e1; }
 #sedes-dist.shade-bubbles .z-95 { color: black; background-color: #e1e1e1; }
 .shade-bubbles-diverging .sedes .z-95::before { background-color: #598ec7; }
-#sedes-dist.shade-bubbles-diverging .z-95 { color: black; background-color: #598ec7; }
+#sedes-dist.shade-bubbles-diverging .z-95 { color: white; background-color: #598ec7; }
 .size-bubbles .sedes .z-95::before { --s: calc(var(--r) * 0.224); }
 .shade-text .sedes .z-96 { color: #e2e2e2; }
 #sedes-dist.shade-text .z-96 { color: black; background-color: #e2e2e2; }
@@ -1188,9 +1192,9 @@ summary, .word {
 
 <table id=infobox>
 <tr><th scope=row>word</th><td><output id=word-output></output></td></tr>
-<tr><th scope=row>shape</th><td><output id=shape-output></output></td></tr>
+<tr><th scope=row>shape</th><td class=shape><output id=shape-output></output></td></tr>
+<tr><th scope=row><i>sedes</i></th><td><output id=sedes-output></output></td></tr>
 <tr><th scope=row>lemma</th><td><output id=lemma-output></output></td></tr>
-<tr><th scope=row>sedes</th><td><output id=sedes-output></output></td></tr>
 <tr><th scope=row>Σ<var>x</var></th><td><output id=sumx-output></output></td></tr>
 </table>
 
@@ -18761,8 +18765,8 @@ const POSSIBLE_SEDES = [1, 2, 2.5, 3, 4, 4.5, 5, 6, 6.5, 7, 8, 8.5, 9, 10, 10.5,
 const LOC_OUTPUT = document.getElementById("loc-output");
 const WORD_OUTPUT = document.getElementById("word-output");
 const SHAPE_OUTPUT = document.getElementById("shape-output");
-const LEMMA_OUTPUT = document.getElementById("lemma-output");
 const SEDES_OUTPUT = document.getElementById("sedes-output");
+const LEMMA_OUTPUT = document.getElementById("lemma-output");
 const SUMX_OUTPUT = document.getElementById("sumx-output");
 const SEDES_DIST = document.getElementById("sedes-dist");
 
@@ -18799,8 +18803,8 @@ function info(event) {
 
     WORD_OUTPUT.textContent = event.target.textContent;
     SHAPE_OUTPUT.textContent = event.target.getAttribute("data-shape") ?? "";
-    LEMMA_OUTPUT.textContent = lemma ?? "";
     SEDES_OUTPUT.textContent = sedes ?? "";
+    LEMMA_OUTPUT.textContent = lemma ?? "";
     SUMX_OUTPUT.textContent = sum_x ?? "";
 
     for (let elem of SEDES_DIST.getElementsByTagName("th"))
