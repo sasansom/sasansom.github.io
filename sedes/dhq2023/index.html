@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width, initial-scale=1">
+<title>“SEDES: Metrical Position in Greek Hexameter” support web page</title>
+<style>
+body {
+	max-width: 48rem;
+	font-family: sans-serif;
+}
+h1 a, h2 a, h3 a {
+	color: inherit;
+	text-decoration: inherit;
+}
+header {
+	background-color: cornsilk;
+	padding: 0.5rem 1rem;
+}
+nav {
+	font-size: smaller;
+}
+.citation {
+	border: 0.1rem dashed gray;
+	border-radius: 0.5rem;
+	padding: 0.5rem 1rem;
+	background-color: ghostwhite;
+}
+address {
+	font-style: inherit;
+}
+address ul {
+	list-style: none;
+	padding-left: 0;
+}
+section {
+	margin-top: 3rem;
+}
+code, pre {
+	background-color: ghostwhite;
+}
+code {
+	padding: 0.2rem 0.3rem;
+}
+pre {
+	padding: 0.5rem 1rem;
+}
+kbd {
+	font-weight: bold;
+}
+blockquote {
+	border-left: 0.2rem solid lightgray;
+	margin-left: 0;
+	padding-left: 1rem;
+	font-style: italic;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<p>
+This is the support web page for the article
+<a href="https://digitalhumanities.org/dhq/vol/17/2/000675/000675.html">“SEDES: Metrical Position in Greek Hexameter”</a>.
+Here you can find instructions for reproducing
+the calculations in our article.
+</p>
+
+<div class=citation>
+Sansom, Stephen A. and Fifield, David. 2023. “SEDES: Metrical Position in Greek Hexameter”.
+<cite>Digital Humanities Quarterly</cite> 17(2).
+Available at: <a href="https://digitalhumanities.org/dhq/vol/17/2/000675/000675.html">https://digitalhumanities.org/dhq/vol/17/2/000675/000675.html</a>
+</div>
+
+<address>
+<ul>
+<li>Stephen A. Sansom &lt;<a href="mailto:sasansom@fsu.edu">sasansom@fsu.edu</a>&gt;</li>
+<li>David Fifield &lt;<a href="mailto:david@bamsoftware.com">david@bamsoftware.com</a>&gt;</li>
+</ul>
+</address>
+
+<p>
+Last updated: <time id=lastupdated>2023-06-07</time>.
+</p>
+
+<nav>
+<a href="../">Back to main SEDES page</a>
+</nav>
+</header>
+
+
+<section id=archive>
+<h2><a href=#archive>Archival download</a></h2>
+
+<dl>
+<dt>Zip file of the SEDES source code at tag <a href="https://github.com/sasansom/sedes/releases/tag/dhq2023">dhq2023</a></dt>
+<dd>
+<p><a href="https://archive.org/download/sedes-dhq2023/sedes-dhq2023.zip">sedes-dhq2023.zip</a></p>
+<p>It was made with the command:</p>
+<pre><kbd>git archive --prefix=sedes-dhq2023/ --output=sedes-dhq2023.zip dhq2023</kbd></pre>
+</dd>
+<dt><a href="https://git-scm.com/book/en/v2/Git-Tools-Bundling">Git bundle</a> of the SEDES source code at tag <a href="https://github.com/sasansom/sedes/releases/tag/dhq2023">dhq2023</a></dt>
+<dd>
+<p><a href="https://archive.org/download/sedes-dhq2023/sedes-dhq2023.bundle">sedes-dhq2023.bundle</a></p>
+<!-- git checkout dhq2023; git bundle create sedes-dhq2023.bundle master HEAD '-'-tags -->
+<p>You can clone from the bundle with the command:</p>
+<pre><kbd>git clone sedes-dhq2023.bundle sedes-dhq2023</kbd></pre>
+</dd>
+<dt>XML (<a href="https://en.wikipedia.org/wiki/Text_Encoding_Initiative"><abbr title="Text Encoding Initiative">TEI</abbr></a>) source code of the article, plus source code for all the figures</dt>
+<dd>
+<p><a href="https://archive.org/download/sedes-dhq2023/sedes-dhq2023-tei.zip">sedes-dhq2023-tei.zip</a></p>
+</dd>
+<dt>Pregenerated data files: corpus/*.csv, expectancy.*.csv, sedes-web/*.html</dt>
+<dd>
+<p><a href="https://archive.org/download/sedes-dhq2023/sedes-dhq2023-data.zip">sedes-dhq2023-data.zip</a></p>
+<p>This is what you would get after <a href=#environment>reproducing the source environment</a>
+and running <code><kbd>make</kbd></code>.</p>
+</dd>
+</dl>
+</section>
+
+
+<section id=environment>
+<h2><a href=#environment>Reproducing the source environment</a></h2>
+
+<p>
+Our source code is stored in the Git repository at
+<a href="https://github.com/sasansom/sedes">https://github.com/sasansom/sedes</a>.
+We have tried to ensure that all
+the results reported in the <cite><abbr title="Digital Humanities Quarterly">DHQ</abbr></cite>
+article reflect the source code as it existed at tag
+<a href="https://github.com/sasansom/sedes/releases/tag/dhq2023">dhq2023</a>
+(commit
+<a href="https://github.com/sasansom/sedes/tree/b0136a4eb9d5bb2a2b8cb077ac49a7ecd7248e59">b0136a4eb9d5bb2a2b8cb077ac49a7ecd7248e59</a>).
+But checking out that past tag alone is not enough,
+because of dependencies: specifically
+<a href="https://pypi.org/project/cltk/">cltk</a> and
+its <a href="https://github.com/cltk/grc_models_cltk">grc_models_cltk corpus</a>,
+which is independently versioned.
+The dependencies notably affect lemmatization,
+so you will need to use the same versions we used
+in order to obtain the same results.
+</p>
+
+<p>
+After cloning the source code repository,
+check out the dhq2023 tag.
+</p>
+
+<pre>
+$ <kbd>git clone https://github.com/sasansom/sedes</kbd>
+$ <kbd>cd sedes</kbd>
+sedes$ <kbd>git checkout dhq2023</kbd>
+</pre>
+
+<p>
+Follow the documented
+<a href="https://github.com/sasansom/sedes/tree/b0136a4eb9d5bb2a2b8cb077ac49a7ecd7248e59#setup">setup instructions</a>,
+but specify particular versions for cltk and nltk:
+</p>
+
+<pre>
+sedes$ <kbd>python3 -m venv venv</kbd>
+sedes$ <kbd>source venv/bin/activate</kbd>
+sedes$ <kbd>pip3 install -U pip setuptools wheel</kbd>
+sedes$ <kbd>pip3 install --force-reinstall cltk==v1.1.5 bs4 lxml</kbd>
+</pre>
+
+<p>
+Install the grc_models_cltk corpus.
+The command below will install the latest version;
+later we will revert it to an older version if necessary.
+</p>
+
+<pre>
+sedes$ <kbd>python3 -c 'from cltk.data.fetch import FetchCorpus; FetchCorpus("grc").import_corpus("grc_models_cltk")'</kbd>
+</pre>
+
+<p>
+The proper version of grc_models_cltk is
+<a href="https://github.com/cltk/grc_models_cltk/tree/94c04acac4405e264322d825978a2f2a80d01da5">94c04acac4405e264322d825978a2f2a80d01da5</a>.
+You will have to manually check out an old version
+if CLTK has installed a newer one.
+By default, CLTK installs a shallow clone of the corpus,
+which you will first have to promote into a full clone.
+</p>
+
+<pre>
+$ <kbd>cd ~/cltk_data/grc/model/grc_models_cltk</kbd>
+~/cltk_data/grc/model/grc_models_cltk$ <kbd>git fetch --unshallow</kbd>
+~/cltk_data/grc/model/grc_models_cltk$ <kbd>git checkout 94c04acac4405e264322d825978a2f2a80d01da5</kbd>
+<samp>Note: switching to '94c04acac4405e264322d825978a2f2a80d01da5'.</samp>
+~/cltk_data/grc/model/grc_models_cltk$ <kbd>git log -1</kbd>
+<samp>commit 94c04acac4405e264322d825978a2f2a80d01da5 (HEAD, origin/master, origin/HEAD, master)
+Merge: 3ded3be a325a05
+Author: Kyle P. Johnson &lt;kyle@kyle-p-johnson.com&gt;
+Date:   Fri Apr 30 07:49:41 2021 -0700
+
+    Merge pull request #4 from diyclassics/lemma-refactor
+    
+    Remove blank lemmas from greek_lemmatized_sents</samp>
+</pre>
+
+<p>
+Be aware the CLTK corpora are a system-wide shared resource,
+and checking out an old version for SEDES
+may affect other projects you have
+on the same computer that use CLTK.
+</p>
+
+<p>
+Now you may proceed as normal;
+i.e., run <code><kbd>make -j4</kbd></code>
+to run the processing pipeline.
+</p>
+
+</section>
+
+
+<section id=reproduce>
+<h2><a href=#reproduce>Reproducing our results</a></h2>
+
+<p>
+Here we show our reasoning and justification for some specific claims
+and how to reproduce our calculations.
+These use a mix of shell commands and R and Python scripts.
+</p>
+
+<hr>
+
+<blockquote cite="https://www.digitalhumanities.org/dhq/editorial/000675/000675.html#p6">
+<p>
+…we have used 12 TEI texts from the Perseus Project,
+totaling about 73,000 lines, with
+<mark>a minimum length of 479 lines and a maximum of 21,356</mark>.
+</p>
+</blockquote>
+
+<pre>
+$ <kbd>(echo "work,lines"; for a in corpus/*.xml; do echo "$a,$(xmlstarlet sel -t -m '//l' -v '"l"' -n -t -m '//lb' -v '"lb"' -n "$a" | wc -l)"; done) &gt; corpus.csv</kbd>
+$ <kbd>R</kbd>
+&gt; <kbd>x &lt;- read.csv("corpus.csv")</kbd>
+&gt; <kbd>x</kbd>
+<samp>                          work lines
+1            corpus/aratus.xml  1155
+2       corpus/argonautica.xml  5834
+3  corpus/callimachushymns.xml   941
+4      corpus/homerichymns.xml  2342
+5             corpus/iliad.xml 15683
+6  corpus/nonnusdionysiaca.xml 21356
+7           corpus/odyssey.xml 12107
+8  corpus/quintussmyrnaeus.xml  8801
+9            corpus/shield.xml   479
+10       corpus/theocritus.xml  2527
+11         corpus/theogony.xml  1042
+12     corpus/worksanddays.xml   831</samp>
+&gt; <kbd>sum(x$lines)</kbd>
+<samp>[1] 73098</samp>
+&gt; <kbd>summary(x$lines)</kbd>
+<samp>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+    479    1017    2434    6092    9628   21356</samp>
+</pre>
+
+<p>
+NB: the line counts you would get by counting distinct line numbers
+in the CSV files are slightly different (smaller),
+because of duplicate line numbers:
+</p>
+
+<pre>
+$ <kbd>R</kbd>
+&gt; <kbd>library("tidyverse")</kbd>
+&gt; <kbd>x &lt;- bind_rows(map_dfr(Sys.glob("corpus/*.csv"), read_csv, col_types = cols(line_n = col_character(), book_n = col_character())))</kbd>
+&gt; <kbd>x %&gt;% select(work, book_n, line_n) %&gt;% unique() %&gt;% nrow()</kbd>
+<samp>[1] 72972</samp>
+&gt; <kbd>x %&gt;% select(work, book_n, line_n) %&gt;% unique() %&gt;% group_by(work) %&gt;% summarize(n = n())</kbd>
+<samp># A tibble: 12 x 2
+   work            n
+ * &lt;chr&gt;       &lt;int&gt;
+ 1 Argon.       5834
+ 2 Callim.Hymn   940
+ 3 Dion.       21259
+ 4 Hom.Hymn     2342
+ 5 Il.         15683
+ 6 Od.         12107
+ 7 Phaen.       1155
+ 8 Q.S.         8800
+ 9 Sh.           479
+10 Theoc.       2500
+11 Theog.       1042
+12 W.D.          831</samp>
+</pre>
+
+<hr>
+
+<blockquote cite="https://www.digitalhumanities.org/dhq/editorial/000675/000675.html#p6">
+<p>
+<strong>Table 1.</strong> Works in the full SEDES corpus.
+</p>
+</blockquote>
+
+<pre>
+$ <kbd>R</kbd>
+&gt; <kbd>library("tidyverse")</kbd>
+&gt; <kbd>x &lt;- bind_rows(map_dfr(Sys.glob("corpus/*.csv"), read_csv, col_types = cols(line_n = col_character(), book_n = col_character())))</kbd>
+&gt; <kbd>x %&gt;% group_by(work) %&gt;% summarize(n = n())</kbd>
+<samp># A tibble: 12 x 2
+   work             n
+ * &lt;chr&gt;        &lt;int&gt;
+ 1 Argon.       38841
+ 2 Callim.Hymn   6480
+ 3 Dion.       126876
+ 4 Hom.Hymn     16020
+ 5 Il.         111865
+ 6 Od.          87185
+ 7 Phaen.        7752
+ 8 Q.S.         60098
+ 9 Sh.           3298
+10 Theoc.       18071
+11 Theog.        7040
+12 W.D.          5856</samp>
+</pre>
+
+<hr>
+
+<blockquote cite="https://www.digitalhumanities.org/dhq/editorial/000675/000675.html#p20">
+<p>
+Running SEDES from start to finish on every work in our corpus (12 TEI files, 73,000 lines, and 490,000 words) on a 2019 MacBook Pro takes about <mark>one minute</mark>.
+</p>
+</blockquote>
+
+<pre>
+sedes$ <kbd>make clean</kbd>
+sedes$ <kbd>make -j 4 $(find corpus/ -name '*.xml' | sed -e 's/.xml/.csv/') &amp;&gt;/dev/null</kbd>
+<samp>75.90s user 3.42s system 314% cpu 25.250 total</samp>
+sedes$ <kbd>make -j 4 expectancy.all.csv &amp;&gt;/dev/null</kbd>
+<samp>4.82s user 0.26s system 99% cpu 5.098 total</samp>
+sedes$ <kbd>make -j 4 &amp;&gt;/dev/null</kbd>
+<samp>98.33s user 3.71s system 386% cpu 26.376 total</samp>
+</pre>
+
+<hr>
+
+<blockquote cite="https://www.digitalhumanities.org/dhq/editorial/000675/000675.html#p25">
+<p>
+If no lemma is found by any of these techniques,
+the last-resort fallback is to use the word itself as the lemma.
+<mark>The fallback occurs for about 2% of words
+in the corpus (7% of unique words).</mark>
+</p>
+</blockquote>
+
+<pre>
+$ <kbd>R</kbd>
+&gt; <kbd>library("tidyverse")</kbd>
+&gt; <kbd>x &lt;- bind_rows(map_dfr(Sys.glob("corpus/*.csv"), read_csv, col_types = cols(line_n = col_character(), book_n = col_character())))</kbd>
+&gt; <kbd>sum(is.na(x$lemma)) / nrow(x) * 100</kbd>
+<samp>[1] 1.713399</samp>
+&gt; <kbd>u &lt;- x %&gt;% select(word, lemma) %&gt;% unique()</kbd>
+&gt; <kbd>sum(is.na(u$lemma)) / nrow(u) * 100</kbd>
+<samp>[1] 6.75545</samp>
+</pre>
+
+<!--
+David's margin note dated 17 September 2022 in the Google Doc
+has a slightly different number for the fraction of unique words,
+6.755255 not 6.75545.
+The former is 4682 / 69309 * 100; the latter is 4682 / 69307 * 100;
+i.e., the number of unique words without a lemma was 2 greater
+than what was re-computed on 2023-04-25.
+A likely explanation is that one of the .csv files had been stale
+when computed for the margin note.
+```
+For future reference:
+
+> x <- bind_rows(map_dfr(Sys.glob("corpus/*.csv"), read_csv, col_types = cols(line_n = col_character(), book_n = col_character())))
+> sum(is.na(x$lemma)) / nrow(x) * 100
+[1] 1.713399
+> u <- x %>% select(word, lemma) %>% unique
+> sum(is.na(u$lemma)) / nrow(u) * 100
+[1] 6.755255
+```
+-->
+
+<hr>
+
+<blockquote cite="https://www.digitalhumanities.org/dhq/editorial/000675/000675.html#p30">
+<p>
+There are <mark>1,526 entries</mark> in the list of overrides,
+about <mark>2.1%</mark> of the lines in the corpus.
+</p>
+</blockquote>
+
+<pre>
+sedes/src$ <kbd>python3 -c 'import known; print(len(known.KNOWN_SCANSIONS))'</kbd>
+<samp>1526</samp>
+sedes/src$ <kbd>R</kbd>
+&gt; <kbd>1526 / 73098 * 100</kbd>
+<samp>[1] 2.087608</samp>
+</pre>
+
+<hr>
+
+<blockquote cite="https://www.digitalhumanities.org/dhq/editorial/000675/000675.html#p35">
+<p>
+For example, in our corpus,
+<mark>the lemma βοῦς (“cow”) appears 448 times,
+while χέλυς (“tortoise”) appears only 8 times.</mark>
+</p>
+</blockquote>
+
+<pre>
+$ <kbd>R</kbd>
+&gt; <kbd>library("tidyverse")</kbd>
+&gt; <kbd>library("stringr")</kbd>
+&gt; <kbd>x &lt;- bind_rows(map_dfr(Sys.glob("corpus/*.csv"), read_csv, col_types = cols(line_n = col_character(), book_n = col_character())))</kbd>
+&gt; <kbd>filter(x, lemma == stringi::stri_trans_nfd("βοῦς")) %&gt;% nrow()</kbd>
+<samp>[1] 448</samp>
+&gt; <kbd>filter(x, lemma == stringi::stri_trans_nfd("χέλυς")) %&gt;% nrow()</kbd>
+<samp>[1] 8</samp>
+</pre>
+
+<hr>
+
+<blockquote cite="https://www.digitalhumanities.org/dhq/editorial/000675/000675.html#p40">
+<strong>Figure 2.</strong>
+Histogram of <var>z</var>‑scores for all words across our entire corpus.
+This chart excludes about 33,000 words with undefined <var>z</var>‑scores.
+<mark>Over 95% of <var>z</var>‑scores lie in the interval [−1.75, +1.75],
+though the tail of negative values extends as far as −11.5.</mark>
+</blockquote>
+
+<pre>
+sedes$ <kbd>src/join-expectancy corpus/*.csv expectancy.all.csv &gt; joined.all.csv</kbd>
+sedes$ <kbd>R</kbd>
+&gt; <kbd>library("tidyverse")</kbd>
+&gt; <kbd>data &lt;- read_csv("joined.all.csv", col_types = cols(book_n = col_character()))</kbd>
+&gt; <kbd>nrow(filter(data, abs(z) &lt;= 1.75)) / nrow(filter(data, !is.na(z)))</kbd>
+<samp>[1] 0.9609975</samp>
+&gt; <kbd>summary(data$z)</kbd>
+<samp>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's
+-11.489  -0.830   0.219   0.000   0.830   1.796   27613</samp>
+&gt; <kbd>summary(replace_na(data, list(z = 0.0))$z)</kbd>
+<samp>     Min.   1st Qu.    Median      Mean   3rd Qu.      Max.
+-11.48912  -0.75853   0.08732   0.00000   0.80112   1.79559</samp>
+</pre>
+
+<hr>
+
+<blockquote cite="https://www.digitalhumanities.org/dhq/editorial/000675/000675.html#p51">
+<p>
+First, consider the lemma <mark>μορφή</mark> (“shape; beauty”).
+</p>
+</blockquote>
+
+<p>
+To find candidates for this example:
+</p>
+
+<pre>
+sedes$ <kbd>R</kbd>
+&gt; <kbd>library("tidyverse")</kbd>
+&gt; <kbd>data &lt;- read_csv("expectancy.all.csv", col_types = cols(x = col_integer(), sedes = col_factor()))</kbd>
+&gt; <kbd>print(data %&gt;% group_by(lemma) %&gt;% filter(!is.na(z) &amp; n() &gt; 3 &amp; max(x) / sum(x) &gt; 0.90), n = 100)</kbd>
+<samp># A tibble: 67 x 4
+# Groups:   lemma [16]
+   lemma     sedes     x      z
+   &lt;chr&gt;     &lt;fct&gt; &lt;int&gt;  &lt;dbl&gt;
+ 1 ἀνάγκη    2.5       2 -3.72
+ 2 ἀνάγκη    6.5       6 -3.59
+ 3 ἀνάγκη    10.5    119  0.275
+ 4 ἀνάγκη    12        1 -3.76
+ 5 ἀοιδή     1         1 -3.51
+ 6 ἀοιδή     2.5       5 -3.41
+ 7 ἀοιδή     6.5       3 -3.46
+ 8 ἀοιδή     7         1 -3.51
+ 9 ἀοιδή     10.5    143  0.290
+10 ἀοιδή     11        2 -3.49
+11 αὔρα      1         6 -3.20
+12 αὔρα      5         1 -3.42
+13 αὔρα      6         1 -3.42
+14 αὔρα      11       85  0.307
+15 δηιοτής   1         2 -3.18
+16 δηιοτής   3         5 -3.04
+17 δηιοτής   8         1 -3.23
+18 δηιοτής   9        77  0.322
+19 ἦμος      1        76  0.229
+20 ἦμος      2         1 -4.39
+21 ἦμος      3         1 -4.39
+22 ἦμος      9         2 -4.33
+23 ἰάλλω     2.5       1 -3.77
+24 ἰάλλω     4.5       4 -3.62
+25 ἰάλλω     6.5       1 -3.77
+26 ἰάλλω     10.5     81  0.272
+27 κεραυνός  2.5       1 -5.63
+28 κεραυνός  4.5       2 -5.60
+29 κεραυνός  6.5       2 -5.60
+30 κεραυνός  10.5    157  0.178
+31 λιλαίομαι 2.5       4 -3.38
+32 λιλαίομαι 6         1 -3.55
+33 λιλαίομαι 6.5      71  0.291
+34 λιλαίομαι 8         1 -3.55
+35 μορφή     1         8 -3.01
+36 μορφή     2         2 -3.15
+37 μορφή     4         5 -3.08
+38 μορφή     6         1 -3.18
+39 μορφή     11      150  0.327
+40 ὀδούς     2.5       3 -3.28
+41 ὀδούς     4.5       3 -3.28
+42 ὀδούς     8.5       1 -3.38
+43 ὀδούς     10.5     76  0.303
+44 ὀνομάζω   5         1 -3.54
+45 ὀνομάζω   6         2 -3.46
+46 ὀνομάζω   8         1 -3.54
+47 ὀνομάζω   10       49  0.286
+48 ῥᾴδιος    1        55  0.301
+49 ῥᾴδιος    3         3 -3.26
+50 ῥᾴδιος    4         1 -3.40
+51 ῥᾴδιος    9         1 -3.40
+52 σχέτλιος  1        56  0.327
+53 σχέτλιος  3         1 -3.18
+54 σχέτλιος  4         1 -3.18
+55 σχέτλιος  9         4 -2.99
+56 τόφρα     1        98  0.267
+57 τόφρα     5         1 -3.86
+58 τόφρα     6         1 -3.86
+59 τόφρα     9         5 -3.69
+60 τοὔνεκα   1        70  0.316
+61 τοὔνεκα   3         2 -3.21
+62 τοὔνεκα   5         1 -3.27
+63 τοὔνεκα   9         4 -3.11
+64 φαρέτρα   4         1 -4.16
+65 φαρέτρα   6         1 -4.16
+66 φαρέτρα   6.5       2 -4.09
+67 φαρέτρα   10.5     68  0.243</samp>
+</pre>
+
+<p>
+ἀοιδή would also work for this example,
+but it would be one additional row
+and its greatest <var>x</var> is not the last listed <i>sedes</i>.
+</p>
+
+<hr>
+
+<blockquote cite="https://www.digitalhumanities.org/dhq/editorial/000675/000675.html#p52">
+<p>
+Next, consider the lemma <mark>δένδρεον</mark> (“tree”).
+</p>
+</blockquote>
+
+<p>
+To find candidates for this example:
+</p>
+
+<pre>
+sedes$ <kbd>R</kbd>
+&gt; <kbd>library("tidyverse")</kbd>
+&gt; <kbd>data &lt;- read_csv("expectancy.all.csv", col_types = cols(x = col_integer(), sedes = col_factor()))</kbd>
+&gt; <kbd>print(data %&gt;% group_by(lemma) %&gt;% arrange(z) %&gt;% filter(sum(x) &gt; 20 &amp; n() &lt; 7 &amp; !is.na(z) &amp; sum(z[1:n()-1] &gt;= 0) == 0 &amp; abs(min(z)) &lt; 0.9 * abs(max(z))) %&gt;% arrange(lemma, sedes), n = 100)</kbd>
+<samp># A tibble: 32 x 4
+# Groups:   lemma [8]
+   lemma    sedes     x      z
+   &lt;chr&gt;    &lt;fct&gt; &lt;int&gt;  &lt;dbl&gt;
+ 1 αἰγιαλός 1         9 -0.546
+ 2 αἰγιαλός 3         9 -0.546
+ 3 αἰγιαλός 7        13  1.39
+ 4 αἰγιαλός 9         8 -1.03
+ 5 δέκατος  4        12  1.33
+ 6 δέκατος  6         8 -0.445
+ 7 δέκατος  2         7 -0.889
+ 8 δέκατος  8         7 -0.889
+ 9 δένδρεον 1        19  1.30
+10 δένδρεον 3        10 -1.02
+11 δένδρεον 7        12 -0.506
+12 δένδρεον 9        11 -0.764
+13 ζάθεος   4        24  1.11
+14 ζάθεος   10        7 -0.965
+15 ζάθεος   6         7 -0.965
+16 ζάθεος   2         9 -0.720
+17 ζάθεος   8         7 -0.965
+18 ἱμερόεις 1        19 -0.981
+19 ἱμερόεις 3        50  1.09
+20 ἱμερόεις 7        20 -0.914
+21 ἱμερόεις 9        21 -0.847
+22 κτέαρ    4         7 -0.845
+23 κτέαρ    10        7 -0.845
+24 κτέαρ    8        10  1.18
+25 οἶστρος  1        13 -0.563
+26 οἶστρος  3        11 -0.953
+27 οἶστρος  9        15 -0.173
+28 οἶστρος  11       23  1.39
+29 οἶστρος  5        10 -1.15
+30 χλοερός  4         7 -0.756
+31 χλοερός  6         8  1.32
+32 χλοερός  2         7 -0.756</samp>
+</pre>
+
+<hr>
+
+<blockquote cite="https://www.digitalhumanities.org/dhq/editorial/000675/000675.html#p54">
+Large negative <var>z</var>‑scores are only possible
+with frequently occurring lemmata.
+<mark>To reach a <var>z</var>‑score as low as −2,
+there must be at least 5 total instances of a lemma;
+for −5 there must be at least 26;
+and for −10 there must be at least 101.</mark>
+</blockquote>
+
+<pre>
+sedes$ <kbd>R</kbd>
+&gt; <kbd>sd_pop &lt;- function(x) { sd(x) * sqrt((length(x) - 1) / length(x)) }</kbd>
+&gt; <kbd>do.call("rbind", lapply(1:101, function(v) with(list(x = c(1, v-1)), (x - mean(rep(x, x))) / sd_pop(rep(x, x)))))</kbd>
+<samp>             [,1]      [,2]
+  [1,]         NA        NA
+  [2,]        NaN       NaN
+  [3,]  -1.414214 0.7071068
+  [4,]  -1.732051 0.5773503
+  [5,]  -2.000000 0.5000000
+  [6,]  -2.236068 0.4472136
+  [7,]  -2.449490 0.4082483
+  [8,]  -2.645751 0.3779645
+  [9,]  -2.828427 0.3535534
+ [10,]  -3.000000 0.3333333
+ [11,]  -3.162278 0.3162278
+ [12,]  -3.316625 0.3015113
+ [13,]  -3.464102 0.2886751
+ [14,]  -3.605551 0.2773501
+ [15,]  -3.741657 0.2672612
+ [16,]  -3.872983 0.2581989
+ [17,]  -4.000000 0.2500000
+ [18,]  -4.123106 0.2425356
+ [19,]  -4.242641 0.2357023
+ [20,]  -4.358899 0.2294157
+ [21,]  -4.472136 0.2236068
+ [22,]  -4.582576 0.2182179
+ [23,]  -4.690416 0.2132007
+ [24,]  -4.795832 0.2085144
+ [25,]  -4.898979 0.2041241
+ [26,]  -5.000000 0.2000000
+ [27,]  -5.099020 0.1961161
+ [28,]  -5.196152 0.1924501
+ [29,]  -5.291503 0.1889822
+ [30,]  -5.385165 0.1856953
+ [31,]  -5.477226 0.1825742
+ [32,]  -5.567764 0.1796053
+ [33,]  -5.656854 0.1767767
+ [34,]  -5.744563 0.1740777
+ [35,]  -5.830952 0.1714986
+ [36,]  -5.916080 0.1690309
+ [37,]  -6.000000 0.1666667
+ [38,]  -6.082763 0.1643990
+ [39,]  -6.164414 0.1622214
+ [40,]  -6.244998 0.1601282
+ [41,]  -6.324555 0.1581139
+ [42,]  -6.403124 0.1561738
+ [43,]  -6.480741 0.1543033
+ [44,]  -6.557439 0.1524986
+ [45,]  -6.633250 0.1507557
+ [46,]  -6.708204 0.1490712
+ [47,]  -6.782330 0.1474420
+ [48,]  -6.855655 0.1458650
+ [49,]  -6.928203 0.1443376
+ [50,]  -7.000000 0.1428571
+ [51,]  -7.071068 0.1414214
+ [52,]  -7.141428 0.1400280
+ [53,]  -7.211103 0.1386750
+ [54,]  -7.280110 0.1373606
+ [55,]  -7.348469 0.1360828
+ [56,]  -7.416198 0.1348400
+ [57,]  -7.483315 0.1336306
+ [58,]  -7.549834 0.1324532
+ [59,]  -7.615773 0.1313064
+ [60,]  -7.681146 0.1301889
+ [61,]  -7.745967 0.1290994
+ [62,]  -7.810250 0.1280369
+ [63,]  -7.874008 0.1270001
+ [64,]  -7.937254 0.1259882
+ [65,]  -8.000000 0.1250000
+ [66,]  -8.062258 0.1240347
+ [67,]  -8.124038 0.1230915
+ [68,]  -8.185353 0.1221694
+ [69,]  -8.246211 0.1212678
+ [70,]  -8.306624 0.1203859
+ [71,]  -8.366600 0.1195229
+ [72,]  -8.426150 0.1186782
+ [73,]  -8.485281 0.1178511
+ [74,]  -8.544004 0.1170411
+ [75,]  -8.602325 0.1162476
+ [76,]  -8.660254 0.1154701
+ [77,]  -8.717798 0.1147079
+ [78,]  -8.774964 0.1139606
+ [79,]  -8.831761 0.1132277
+ [80,]  -8.888194 0.1125088
+ [81,]  -8.944272 0.1118034
+ [82,]  -9.000000 0.1111111
+ [83,]  -9.055385 0.1104315
+ [84,]  -9.110434 0.1097643
+ [85,]  -9.165151 0.1091089
+ [86,]  -9.219544 0.1084652
+ [87,]  -9.273618 0.1078328
+ [88,]  -9.327379 0.1072113
+ [89,]  -9.380832 0.1066004
+ [90,]  -9.433981 0.1059998
+ [91,]  -9.486833 0.1054093
+ [92,]  -9.539392 0.1048285
+ [93,]  -9.591663 0.1042572
+ [94,]  -9.643651 0.1036952
+ [95,]  -9.695360 0.1031421
+ [96,]  -9.746794 0.1025978
+ [97,]  -9.797959 0.1020621
+ [98,]  -9.848858 0.1015346
+ [99,]  -9.899495 0.1010153
+[100,]  -9.949874 0.1005038
+[101,] -10.000000 0.1000000</samp>
+</pre>
+
+</section>
+
+</body>
+</html>
