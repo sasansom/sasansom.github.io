@@ -264,8 +264,7 @@ $ <kbd>R</kbd>
 
 <p>
 NB: the line counts you would get by counting distinct line numbers
-in the CSV files are slightly different (smaller),
-because of duplicate line numbers:
+in the CSV files are slightly different (smaller):
 </p>
 
 <pre>
@@ -291,6 +290,31 @@ $ <kbd>R</kbd>
 11 Theog.       1042
 12 W.D.          831</samp>
 </pre>
+
+<p>
+In our notes during the writing of the paper,
+we believed that the difference in line counts between the xmlstarlet command
+and what is output by tei2csv had to do with duplicate line numbers in the TEI.
+Further inspection after the fact revealed that
+<a href="https://github.com/sasansom/sedes/issues/77">duplicate line numbers</a>
+were only a small part of it.
+The other causes were:
+</p>
+
+<ul>
+<li>Blank lines in the TEI, which contain now words, and therefore are not represented in tei2csv output, which has one word per row:
+<a href="https://github.com/sasansom/sedes/blob/dhq2023/corpus/callimachushymns.xml#L799">Callim. <cite>Hymn</cite> 4.200</a>,
+<a href="https://github.com/sasansom/sedes/blob/dhq2023/corpus/quintussmyrnaeus.xml#L3006">Q.S. 4.525</a>,
+<a href="https://github.com/sasansom/sedes/blob/dhq2023/corpus/theocritus.xml#L649"><cite>Idylls</cite> 5.41</a>,
+<a href="https://github.com/sasansom/sedes/blob/dhq2023/corpus/theocritus.xml#L2936">27.10</a>(?),
+<a href="https://github.com/sasansom/sedes/blob/dhq2023/corpus/theocritus.xml#L2973">27.44</a>.</li>
+<li><a href="https://github.com/sasansom/sedes/blob/dhq2023/corpus/nonnusdionysiaca.xml#L90-L91">Lines within <code>head</code> elements</a> at the beginning of each book of <cite>Dion.</cite>.
+</ul>
+
+<p>
+We probably should have just reported the tei2csv counts,
+but it does not make a big difference in the end.
+</p>
 
 <hr>
 
