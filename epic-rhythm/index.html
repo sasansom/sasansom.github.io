@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width, initial-scale=1">
+<title>“Epic Rhythm: Metrical Shapes in Greek Hexameter” support web page</title>
+<style>
+body {
+	max-width: 48rem;
+	font-family: sans-serif;
+}
+h1 a, h2 a, h3 a {
+	color: inherit;
+	text-decoration: inherit;
+}
+header {
+	background-color: cornsilk;
+	padding: 0.5rem 1rem;
+}
+nav {
+	font-size: smaller;
+}
+.citation {
+	border: 0.1rem dashed gray;
+	border-radius: 0.5rem;
+	padding: 0.5rem 1rem;
+	background-color: ghostwhite;
+}
+address {
+	font-style: inherit;
+}
+address ul {
+	list-style: none;
+	padding-left: 0;
+}
+section {
+	margin-top: 3rem;
+}
+code, pre {
+	background-color: ghostwhite;
+}
+code {
+	padding: 0.2rem 0.3rem;
+}
+pre {
+	padding: 0.5rem 1rem;
+}
+kbd {
+	font-weight: bold;
+}
+blockquote {
+	border-left: 0.2rem solid lightgray;
+	margin-left: 0;
+	padding-left: 1rem;
+	font-style: italic;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<p>
+This is the support web page for the article
+<a href="https://grbs.library.duke.edu/index.php/grbs/article/view/17015">“Epic Rhythm: Metrical Shapes in Greek Hexameter”</a>.
+</p>
+
+<div class=citation>
+Sansom, Stephen A. and Fifield, David. 2024. “Epic Rhythm: Metrical Shapes in Greek Hexameter”.
+<cite>Greek, Roman, and Byzantine Studies</cite> 64(3).
+Available at: <a href="https://grbs.library.duke.edu/index.php/grbs/article/view/17015">https://grbs.library.duke.edu/index.php/grbs/article/view/17015</a>
+</div>
+
+<address>
+<ul>
+<li>Stephen A. Sansom &lt;<a href="mailto:sasansom@fsu.edu">sasansom@fsu.edu</a>&gt;</li>
+<li>David Fifield &lt;<a href="mailto:david@bamsoftware.com">david@bamsoftware.com</a>&gt;</li>
+</ul>
+</address>
+
+<p>
+Last updated: <time id=lastupdated>2024-09-08</time>.
+</p>
+
+<nav>
+<a href="../sedes/">Back to main SEDES page</a>
+</nav>
+</header>
+
+
+<section id=tables>
+<h2><a href=#tables>Online appendix</a></h2>
+
+<p>
+This is the article's full online appendix.
+</p>
+
+<blockquote>
+<p>
+Two appendices report expectancy <var>x</var> and <var>z</var> data
+for the metrical shapes of words and appositive groups
+in major poems of the hexameter corpus.
+The Appendix linked to this paper is a synopsis
+of the distribution of metrical shapes in epic,
+while the second appendix (online) provides the diachronic distribution
+of each shape by text.
+</p>
+</blockquote>
+
+<dl>
+<dt>Tables of expectancy for every attested metrical shape, by work</dt>
+<dd>
+<p>
+<a href="tables.html">tables.html</a>
+</dd>
+</dl>
+
+</section>
+
+
+<section id=archive>
+<h2><a href=#archive>Archival download</a></h2>
+
+<p>
+In order to reproduce the experimental data,
+you need both the
+<a href="https://github.com/sasansom/epic-rhythm">epic-rhythm</a> source code
+and the
+<a href="https://github.com/sasansom/sedes">SEDES</a> source code.
+</p>
+
+<dl>
+<dt>PDF and OOXML of the article itself</dt>
+<dd>
+<p>
+<a href="https://archive.org/download/epic-rhythm/EpicRhythm.pdf">EpicRhythm.pdf</a><br>
+<a href="https://archive.org/download/epic-rhythm/EpicRhythm.docx">EpicRhythm.docx</a>
+</p>
+<p>
+<a href="https://archive.org/download/epic-rhythm/EpicAppendix.pdf">EpicAppendix.pdf</a><br>
+<a href="https://archive.org/download/epic-rhythm/EpicAppendix.docx">EpicAppendix.docx</a>
+</p>
+</dd>
+<dt>Zip file and <a href="https://git-scm.com/book/en/v2/Git-Tools-Bundling">Git bundle</a> of the epic-rhythm source code at tag <a href="https://github.com/sasansom/epic-rhythm/releases/tag/grbs2024">grbs2024</a></dt>
+<dd>
+<p>
+<a href="https://archive.org/download/epic-rhythm/epic-rhythm.grbs2024.zip">epic-rhythm.grbs2024.zip</a><br>
+<a href="https://archive.org/download/epic-rhythm/epic-rhythm.grbs2024.bundle">epic-rhythm.grbs2024.bundle</a>
+</p>
+<p>Which were created like this:</p>
+<pre><kbd>git archive --prefix=epic-rhythm.grbs2024/ --output=epic-rhythm.grbs2024.zip grbs2024
+git checkout grbs2024; git bundle create epic-rhythm.grbs2024.bundle HEAD master grbs2024</kbd></pre>
+</dd>
+<dt>Zip file and Git bundle of the SEDES source code at tag <a href="https://github.com/sasansom/sedes/releases/tag/epic-rhythm">epic-rhythm</a></dt>
+<dd>
+<p>
+<a href="https://archive.org/download/epic-rhythm/sedes.epic-rhythm.zip">sedes.epic-rhythm.zip</a><br>
+<a href="https://archive.org/download/epic-rhythm/sedes.epic-rhythm.bundle">sedes.epic-rhythm.bundle</a>
+</p>
+<p>Which were created like this:</p>
+<pre><kbd>git archive --prefix=sedes.epic-rhythm/ --output=sedes.epic-rhythm.zip epic-rhythm
+git checkout epic-rhythm; git bundle create sedes.epic-rhythm.bundle HEAD master epic-rhythm</kbd></pre>
+</dd>
+</dl>
+</section>
+
+
+<section id=environment>
+<h2><a href=#environment>Reproducing the source environment</a></h2>
+
+<p>
+In order to reproduce our tables and figures,
+you will need the
+<a href="https://github.com/sasansom/epic-rhythm">epic-rhythm</a> source code
+(at tag
+<a href="https://github.com/sasansom/epic-rhythm/releases/tag/grbs2024">grbs2024</a>,
+commit 4891970f)
+and the
+<a href="https://github.com/sasansom/sedes">SEDES</a> source code
+(at tag
+<a href="https://github.com/sasansom/sedes/releases/tag/epic-rhythm">epic-rhythm</a>,
+commit 2ec2a124)
+as archived above.
+You will also need the appropriate version of dependencies: specifically
+<a href="https://pypi.org/project/cltk/">cltk</a> and
+its <a href="https://github.com/cltk/grc_models_cltk">grc_models_cltk corpus</a>,
+which is independently versioned.
+The dependencies notably affect lemmatization,
+so you will need to use the same versions we used
+in order to obtain the same results.
+</p>
+
+<p>
+Clone the source code repositories
+in sibling subdirectories
+and check out the appropriate tags.
+</p>
+
+<pre>
+$ <kbd>git clone -b grbs2024 https://github.com/sasansom/epic-rhythm</kbd>
+$ <kbd>git clone -b epic-rhythm https://github.com/sasansom/sedes</kbd>
+</pre>
+
+<p>
+Enter the sedes subdirectory and
+follow the documented
+<a href="https://github.com/sasansom/sedes/tree/2ec2a1240e75acec2588838f18e18220ecced9f1#setup">setup instructions</a>,
+but specify particular versions for cltk and nltk:
+</p>
+
+<pre>
+$ <kbd>cd sedes</kbd>
+sedes$ <kbd>python3 -m venv venv</kbd>
+sedes$ <kbd>source venv/bin/activate</kbd>
+sedes$ <kbd>pip3 install -U pip setuptools wheel</kbd>
+sedes$ <kbd>pip3 install --force-reinstall cltk==v1.1.7 bs4 lxml</kbd>
+</pre>
+
+<p>
+Install the grc_models_cltk corpus.
+The command below will install the latest version;
+later we will revert it to an older version if necessary.
+</p>
+
+<pre>
+sedes$ <kbd>python3 -c 'from cltk.data.fetch import FetchCorpus; FetchCorpus("grc").import_corpus("grc_models_cltk")'</kbd>
+</pre>
+
+<p>
+The proper version of grc_models_cltk is
+<a href="https://github.com/cltk/grc_models_cltk/tree/94c04acac4405e264322d825978a2f2a80d01da5">94c04acac4405e264322d825978a2f2a80d01da5</a>.
+You will have to manually check out an old version
+if CLTK has installed a newer one.
+By default, CLTK installs a shallow clone of the corpus,
+which you will first have to promote into a full clone.
+</p>
+
+<pre>
+$ <kbd>cd ~/cltk_data/grc/model/grc_models_cltk</kbd>
+~/cltk_data/grc/model/grc_models_cltk$ <kbd>git fetch --unshallow</kbd>
+~/cltk_data/grc/model/grc_models_cltk$ <kbd>git checkout 94c04acac4405e264322d825978a2f2a80d01da5</kbd>
+<samp>Note: switching to '94c04acac4405e264322d825978a2f2a80d01da5'.</samp>
+~/cltk_data/grc/model/grc_models_cltk$ <kbd>git log -1</kbd>
+<samp>commit 94c04acac4405e264322d825978a2f2a80d01da5 (HEAD, origin/master, origin/HEAD, master)
+Merge: 3ded3be a325a05
+Author: Kyle P. Johnson &lt;kyle@kyle-p-johnson.com&gt;
+Date:   Fri Apr 30 07:49:41 2021 -0700
+
+    Merge pull request #4 from diyclassics/lemma-refactor
+    
+    Remove blank lemmas from greek_lemmatized_sents</samp>
+</pre>
+
+<p>
+Be aware the CLTK corpora are a system-wide shared resource,
+and checking out an old version for SEDES
+may affect other projects you have
+on the same computer that use CLTK.
+</p>
+
+<p>
+Now go into the epic-rhythm subdirectory.
+Install its dependencies.
+Then run <code><kbd>make</kbd></code>, giving it the path
+to the sedes checkout.
+</p>
+
+<pre>
+sedes$ <kbd>cd ../epic-rhythm</kbd>
+epic-rhythm$ <kbd>pip3 install --force-reinstall pandas</kbd>
+epic-rhythm$ <kbd>make SEDES=../sedes</kbd>
+</pre>
+
+<p>
+This will create various CSV files, HTML tables, and graphics.
+unexpected.txt supports the calculations that are reported in the text.
+</p>
+
+</section>
+
+
+<section id=calculations>
+<h2><a href=#calculations>Calculations</a></h2>
+
+<p>
+Here we show our reasoning and justification for some specific claims
+and how to reproduce our calculations.
+</p>
+
+<hr>
+
+<blockquote>
+<p>
+…the percentage of windows of 181 shapes that have 0 or 1 unexpected shapes is <mark>0.72%</mark>.
+</p>
+</blockquote>
+
+<p><a href="https://github.com/sasansom/epic-rhythm/blob/grbs2024/unexpected.txt#L201-L202">unexpected.txt</a>:</p>
+<pre>
+          0           1           2           3           4           5           6           7           8           9          10          11          12          13          14          15          16          17          18          19 
+  0.1004825   <mark>0.7232407</mark>   2.6633718   7.4877026  15.9241474  28.1415402  42.3329478  56.8976597  71.5967378  82.6334607  89.8080316  94.3209833  96.9954549  98.3414537  99.1546613  99.7003050  99.9170435  99.9818898  99.9988316 100.0000000 
+</pre>
+
+<hr>
+
+<blockquote>
+…the shape of <span lang=el>ἐγείνατο</span> (⏑ ‒ ⏑ ⏑) is very unexpected
+(<var>z</var> = <mark>−5.40</mark>) at sedes <mark>2.5</mark>;
+it is much more common, for example, at sedes <mark>6.5</mark>.
+</blockquote>
+
+<p><a href="https://github.com/sasansom/epic-rhythm/blob/grbs2024/expectancy.sedes-metrical_shape.archaic.csv#L174-L177">expectancy.sedes-metrical_shape.archaic.csv</a>:</p>
+<pre>
+⏑–⏑⏑,<mark>2.5</mark>,158,<mark>-5.39801722238418</mark>
+⏑–⏑⏑,4.5,2,-5.56034176297879
+⏑–⏑⏑,<mark>6.5</mark>,5523,<mark>+0.184490215372676</mark>
+⏑–⏑⏑,8.5,28,-5.53328767287969
+</pre>
+
+<hr>
+
+<blockquote>
+<p>
+By this definition, <mark>3.30% (13,160/399,327)</mark> of words or appositive groups
+in the epic corpus have a metrical shape that is unexpected at the
+<i>sedes</i> at which it appears…
+</p>
+</blockquote>
+
+<p><a href="https://github.com/sasansom/epic-rhythm/blob/grbs2024/unexpected.txt#L2">unexpected.txt</a>:</p>
+<pre>
+Percentage of unexpected words <mark>13160/399327 = 3.30%</mark>
+</pre>
+
+<hr>
+
+<blockquote>
+<p>
+…<mark>4.00% (3,551/88,796)</mark> of shapes in the
+<cite>Iliad</cite>
+are unexpected
+(an average of <mark>147.96</mark> per book,
+which themselves average roughly <mark>3,700</mark> shapes)…
+</p>
+</blockquote>
+
+<p><a href="https://github.com/sasansom/epic-rhythm/blob/grbs2024/unexpected.txt#L4-L7">unexpected.txt</a>:</p>
+<pre>
+Iliad
+Percentage of unexpected words <mark>3551/88796 = 4.00%</mark>
+Unexpected words per book 3551/24 = <mark>147.96</mark>
+Average words per book 88796/24 = <mark>3699.83</mark>
+</pre>
+
+<hr>
+
+<blockquote>
+<p>
+Book 10 having the least proportion of unexpected shapes at
+<mark>3.27% (108/3,303)</mark>
+and Book 2 having the greatest at
+<mark>4.68% (227/4,850)</mark>.
+</p>
+</blockquote>
+
+<p><a href="https://github.com/sasansom/epic-rhythm/blob/grbs2024/unexpected.txt#L9-L34">unexpected.txt</a>:</p>
+<pre>
+   book_n num_words num_unexpected pct_unexpected era
+   &lt;chr&gt;      &lt;int&gt;          &lt;int&gt;          &lt;dbl&gt; &lt;fct&gt;
+ 1 10          <mark>3303            108           3.27</mark> archaic
+ 2 3           2589             87           3.36 archaic
+ 3 16          4903            167           3.41 archaic
+ 4 24          4627            161           3.48 archaic
+ 5 17          4284            155           3.62 archaic
+ 6 13          4757            174           3.66 archaic
+ 7 11          4825            183           3.79 archaic
+ 8 15          4231            164           3.88 archaic
+ 9 1           3518            137           3.89 archaic
+10 19          2404             94           3.91 archaic
+11 9           3960            159           4.02 archaic
+12 20          2857            116           4.06 archaic
+13 8           3132            128           4.09 archaic
+14 6           2974            123           4.14 archaic
+15 7           2709            113           4.17 archaic
+16 22          2993            125           4.18 archaic
+17 21          3504            147           4.20 archaic
+18 5           5152            218           4.23 archaic
+19 18          3544            150           4.23 archaic
+20 12          2628            112           4.26 archaic
+21 4           3030            134           4.42 archaic
+22 14          2981            134           4.50 archaic
+23 23          5041            235           4.66 archaic
+24 2           <mark>4850            227           4.68</mark> archaic
+</pre>
+
+</section>
+
+</body>
+</html>
