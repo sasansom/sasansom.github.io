@@ -1,0 +1,286 @@
+/* Global settings for responsive behavior */
+* {
+    box-sizing: border-box;
+}
+
+/* General Body Styles */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: #FFFFFF;
+    color: #212529;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Header Styles */
+header {
+    background: #FFFFFF;
+    color: #212529;
+    padding: 1rem 0;
+    text-align: center;
+    border-bottom: 1px solid #dee2e6;
+}
+
+header h1 {
+    margin: 0;
+}
+header h1 a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Navigation Bar Styles */
+nav {
+    background: #e9ecef;
+    padding: 0.5rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav ul {
+    padding: 0;
+    list-style: none;
+    text-align: center;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav a {
+    color: #212529;
+    text-decoration: none;
+}
+
+/* Main Content Area */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+}
+
+/* Styling for all content sections */
+section {
+    background: none;
+    padding: 0;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 900px;
+}
+
+/* Justify text in paragraphs and list items with hyphenation */
+section p, section li {
+    text-align: justify;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+}
+
+/* The container for the intro text still needs to be centered */
+#intro {
+    text-align: center;
+}
+
+/* Reusable class for page photos */
+.page-photo {
+    border-radius: 15px; 
+    width: 400px;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+/* Helper class just for centering things */
+.center-content {
+    text-align: center;
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #FFFFFF;
+    color: #5a6268;
+    border-top: 1px solid #dee2e6;
+}
+
+footer a {
+    color: #5a6268;
+    text-decoration: none;
+}
+
+/* Photo Caption Styles */
+.photo-container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+    max-width: 100%;
+}
+.photo-container figcaption {
+    margin-top: -0.5rem;
+    font-size: 0.9em;
+    font-style: italic;
+    color: #6c757d;
+    text-align: center;
+}
+
+/* Outreach Page Grid Styles */
+.outreach-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+.grid-item {
+    display: block;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.grid-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.grid-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Footer Icon Styles */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    padding-top: 0.5rem;
+}
+.social-icons a i {
+    font-size: 2rem;
+    color: #5a6268;
+    transition: color 0.2s ease-in-out;
+}
+.social-icons a .img-icon {
+    width: 28px;
+    height: 28px;
+    vertical-align: middle;
+    opacity: 0.7;
+    transition: opacity 0.2s ease-in-out;
+}
+.text-icon {
+    font-weight: bold;
+    font-size: 1.4rem;
+    text-decoration: none;
+    color: #5a6268;
+    transition: color 0.2s ease-in-out;
+    line-height: 1;
+}
+.social-icons a:hover i,
+.social-icons a:hover .text-icon {
+    color: #212529;
+}
+.social-icons a:hover .img-icon {
+    opacity: 1;
+}
+
+/* Subheading Styles for Courses */
+#courses-taught h3 {
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #e9ecef;
+    font-size: 1.4rem;
+}
+#courses-taught h3:first-of-type {
+    margin-top: 1.5rem;
+}
+
+/* Style for Home Page Tagline */
+.tagline {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #5a6268;
+    margin-top: -0.5rem;
+    margin-bottom: 2rem;
+}
+
+/* --- REVISED Publication Styles for Reversed Logic --- */
+
+.publication-entry {
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #e9ecef;
+}
+.publication-entry:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.publication-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1.5rem;
+}
+
+.publication-main .citation {
+    margin: 0;
+    flex-grow: 1;
+}
+
+.publication-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+}
+
+.publication-actions a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #5a6268;
+    white-space: nowrap;
+}
+.publication-actions a:hover {
+    text-decoration: underline;
+}
+
+.abstract-toggle-btn {
+    background-color: #e9ecef;
+    border: 1px solid #dee2e6;
+    padding: 4px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 0.85em;
+    color: #212529;
+    white-space: nowrap;
+    transition: background-color 0.2s ease-in-out;
+}
+.abstract-toggle-btn:hover {
+    background-color: #dee2e6;
+}
+
+.abstract-content {
+    display: block;  /* Makes abstract visible by default */
+    margin-top: 1rem;
+    padding-left: 1rem;
+    border-left: 3px solid #e9ecef;
+    color: #555;
+}
+
+/* New helper class to hide elements */
+.is-hidden {
+    display: none !important;
+}
